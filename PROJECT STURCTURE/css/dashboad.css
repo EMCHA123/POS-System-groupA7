@@ -44,7 +44,6 @@ i{
 .content{
     width: 100%;
     display: flex;
-    
 }
 nav{
     width: 15%;
@@ -53,6 +52,7 @@ nav{
     height: 100vh;
     position: fixed;
     top: 50px;
+    
 }
 nav .nav-logo{
     display: flex;
@@ -81,8 +81,4 @@ nav ul li a{
    margin-left: 5px;
 }
 
-.product-side{
-    margin-left: 15%;
-    margin-top: 50px;
-}
 
