@@ -135,6 +135,7 @@ nav ul li a{
     overflow: hidden;
     box-shadow: 5px 5px 20px rgba(152, 129, 129, 0.5);
     transition: 0.5s;
+
 }
 .card:hover{
     width: 48%;
@@ -185,6 +186,13 @@ button:hover{
     border-radius: 10px;
     box-shadow: 5px 5px 20px rgba(152, 129, 129, 0.5);
 }
+.boxAddtoCart p{
+    padding: 0px 5px;
+    margin: 0px 5px;
+}
+.boxAddtoCart p:hover{
+    cursor: pointer;
+}
 .boxAddtoCart .boxbottom{
     width: 100%;
     display: flex;
@@ -193,9 +201,8 @@ button:hover{
 .boxbottom .spanQuantity{
     width: 100%;
     display: flex;
+    padding: 0px 5px;
 }
-
-
 
 .createProPage{
     width: 100%;
