@@ -3,7 +3,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
     list-style: none;
     text-decoration: none;
 }
@@ -24,7 +24,6 @@ i{
     justify-content: end;
     align-items: center;
     background-color: black;
-    position: fixed;
 }
 .bar-top input{
     width: 30%;
@@ -49,9 +48,7 @@ nav{
     width: 15%;
     background-color: black;
     color: #fff;
-    height: 100vh;
-    position: fixed;
-    top: 50px;
+    height: 90vh;
 }
 nav .nav-logo{
     display: flex;
@@ -73,6 +70,9 @@ nav ul li{
     padding: 10px 5px;
     opacity: 0.6;
 }
+#menuPro{
+    opacity: 1;
+}
 nav ul li:hover{
     opacity: 1;
 }
@@ -83,12 +83,15 @@ nav ul li a{
 
 .product-side{
     width: 85%;
-    margin-left: 15%;
-    margin-top: 50px;
     display: flex;
 }
 .product-side .cartPro-side{
     width: 60%;
+    height: 90vh;
+    overflow-y: scroll;
+}
+.cartPro-side::-webkit-scrollbar{
+    display: none;
 }
 .cardSide{
     display: flex;
@@ -115,7 +118,7 @@ nav ul li a{
     text-align: center;
     transition: 0.5s;
     color: #fff;
-    background-color: rgb(27, 155, 211);
+    background-color: teal;
 }
 .categories span:hover{
     width: 18%;
@@ -143,7 +146,7 @@ nav ul li a{
 }
 .card h2{
     padding: 10px 5px;
-    background-color: teal;
+    background-color: rgb(27, 155, 211);
     color: #fff;
 }
 .card span{
@@ -170,10 +173,14 @@ button:hover{
     transition: 0.5s;
     cursor: pointer;
 }
-.product-side .addToCart-side{
+.product-side .addToCart{
     width: 40%;
     margin: 5px;
-    background-color: #fff;   
+    background-color: #fff;  
+    overflow-y: scroll; 
+}
+.addToCart::-webkit-scrollbar{
+    display: none;
 }
 .addToCart-side .boxAddtoCart{
     width: 100%;
@@ -193,16 +200,56 @@ button:hover{
 .boxAddtoCart p:hover{
     cursor: pointer;
 }
+.boxAddtoCart .boxTop{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 5px;
+}
+.boxTop img{
+    width: 10px;
+    height: 10px;
+}
 .boxAddtoCart .boxbottom{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    padding: 5px 5px;
 }
 .boxbottom .spanQuantity{
     width: 100%;
     display: flex;
-    padding: 0px 5px;
 }
+.addToCart .checkTotalCard{
+    width: 20%;
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(142, 125, 125, 0.5);
+    padding: 5px 10px;
+    border-radius: 10px;
+    position: fixed;
+    right: 0px;
+    bottom: 10px;
+}
+.checkTotalCard h3{
+    margin: 5px 0px;
+}
+#btnCheckPrice{
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 0%;
+    transition: 0.5s;
+    padding: 10px;
+    background-color: rgb(27, 155, 211);
+    color: #fff;
+}
+#btnCheckPrice:hover{
+    transition: 0.5s;
+    padding: 11px;
+    background-color: aqua;
+    color: #222;
+}
+
 
 .createProPage{
     width: 100%;

@@ -7,20 +7,22 @@ let proData = [
     // { name: 'All in one citrus upholstery cleaner', nbStock: 10, price: 3 },
 ];
 
-let cardSide = document.querySelector('.cardSide');
-let addProIcons = document.querySelector('.addProIcon');
-let createProPage = document.querySelector('.createProPage');
-let namePro = document.querySelector('#name');
-let categoriesPro = document.querySelector('#categories');
-let stockPro = document.querySelector('#stock');
-let pricePro = document.querySelector('#price');
-let btncancelCreatePage = document.querySelector('#btnCancel');
-let btnCreateProPage = document.querySelector('#btnCreate');
-let addToCartPage = document.querySelector('.addToCart-side');
+const cardSide = document.querySelector('.cardSide');
+const addProIcons = document.querySelector('.addProIcon');
+const createProPage = document.querySelector('.createProPage');
+const namePro = document.querySelector('#name');
+const categoriesPro = document.querySelector('#categories');
+const stockPro = document.querySelector('#stock');
+const pricePro = document.querySelector('#price');
+const btncancelCreatePage = document.querySelector('#btnCancel');
+const btnCreateProPage = document.querySelector('#btnCreate');
+const addToCartPage = document.querySelector('.addToCart-side');
 
+// _______________________ShowPage_______________________
 function show(element) {
     element.style.display = 'block';
 }
+// _______________________HidePage_______________________
 function hide(element) {
     element.style.display = 'none';
 }
@@ -45,6 +47,7 @@ function getDataFromCrePrPg(){
     location.reload();
 }
 
+// __________________ClickToCreateCardProduct__________________
 btnCreateProPage.addEventListener('click', ()=> { 
     getDataFromCrePrPg();
     namePro.value = '';
@@ -54,14 +57,18 @@ btnCreateProPage.addEventListener('click', ()=> {
     hide(createProPage);
 })
 
+// _______________________________SaveCreatDataToLocalStorage___________________
 function saveProductData() {
     localStorage.setItem('productData', JSON.stringify(proData));
 };
+
+// ___________________________LoadDataFromLocalStorage___________________
 function loadSaveProductData() {
     let getStorage = JSON.parse(localStorage.getItem('productData'));
     proData = getStorage != null ? getStorage : proData;
 }
 
+// ________________________________DisplayCardProduct________________________
 function dispalyProCard() {
     hide(createProPage)
     i = 0;
@@ -86,7 +93,6 @@ function dispalyProCard() {
         spanBtn.id = 'spanBtn';
         btnAddToCart = document.createElement('button');
         btnAddToCart.id = i;
-        console.log(btnAddToCart.id)
         btnAddToCart.textContent = 'Add to cart';
         btnAddToCart.addEventListener('click', disPlayAddToCart);
 
@@ -99,11 +105,11 @@ function dispalyProCard() {
         card.appendChild(spanBtn);
 
         cardSide.appendChild(card);
-
         i++
     }
 }
 
+// _______________________________DisplayAddToCardBox________________________
 function disPlayAddToCart(e) {
     let boxAddToCart = document.querySelectorAll('.boxAddtoCart');
     let getData = proData;
@@ -123,8 +129,7 @@ function disPlayAddToCart(e) {
 
                 let numPrice = e.target.closest('.card').children[2].children[0].textContent;
                 let editNumPrice = numPrice.slice(0, numPrice.length - 1);
-                eachBox.children[1].children[1].textContent = parseInt((editNumPrice) * (numOfQuantity + 1)) + '$';
-                console.log(editNumPrice)
+                eachBox.children[1].children[1].textContent = (editNumPrice) * (numOfQuantity + 1) + '$';
             }
         }
     }
@@ -143,6 +148,8 @@ function disPlayAddToCart(e) {
         boxTopTitle.textContent = displayData.name;
 
         let deleteBoxImg = document.createElement('img');
+        deleteBoxImg.src = 'img/deletImg.png';
+        deleteBoxImg.addEventListener('click', deletAddToCart)
 
         let boxBottom = document.createElement('div');
         boxBottom.classList.add('boxbottom');
@@ -155,8 +162,10 @@ function disPlayAddToCart(e) {
         quantityNb.textContent = '1';
         let minusQuantityNb = document.createElement('p');
         minusQuantityNb.textContent = '-';
+        minusQuantityNb.addEventListener('click', minusQuanttNb);
         let plusQuantityNb = document.createElement('p');
         plusQuantityNb.textContent = '+';
+        plusQuantityNb.addEventListener('click', plusQuanttNb)
 
         let boxTotal = document.createElement('span');
         boxTotal.textContent = displayData.price + '$';
@@ -176,6 +185,73 @@ function disPlayAddToCart(e) {
     }
 
 }
+
+// ___________________________MinuxQuantityAddToCartBox______________________________
+function minusQuanttNb(e){
+    let allCardInf = document.querySelectorAll('.card');
+    let titleAddCart = e.target.closest('.boxAddtoCart').children[0].children[0].textContent;
+    let numQuantt = e.target.parentElement.children[0].textContent;
+
+    for (cardInf of allCardInf){
+        let oriTitleCard = cardInf.children[0].textContent;
+        if (oriTitleCard === titleAddCart){
+            let oriPrice = cardInf.children[2].children[0].textContent;
+
+            let stockNb = cardInf.children[1].children[0].textContent;
+            let oriNumPrice = oriPrice.slice(0, oriPrice.length-1);
+
+            let priceAddToCart = e.target.closest('.boxbottom').children[1].textContent;
+            let prAddToCart = priceAddToCart.slice(0, priceAddToCart.length-1);
+            if (numQuantt > 0){
+                numQuantt -= 1
+                e.target.parentElement.children[0].textContent = numQuantt;
+
+                cardInf.children[1].children[0].textContent = parseInt(stockNb) + 1;
+
+                e.target.closest('.boxbottom').children[1].textContent = prAddToCart - oriNumPrice + '$';
+            }else{
+                e.target.closest('.boxAddtoCart').remove();
+            };
+        }  
+    }   
+}
+
+// ___________________________PlusQuantityAddToCartBox_________________________
+function plusQuanttNb(e){
+    let allCardInf = document.querySelectorAll('.card');
+    let titleAddCart = e.target.closest('.boxAddtoCart').children[0].children[0].textContent;
+    for (cardInf of allCardInf){
+        let oriTitleCard = cardInf.children[0].textContent;
+        let oriNbPrice = cardInf.children[2].children[0].textContent;
+        let editOriNbPrice = oriNbPrice.slice(0, oriNbPrice.length-1)
+        console.log(oriNbPrice)
+        if (oriTitleCard === titleAddCart){
+            
+            let stockNbOri = cardInf.children[1].children[0].textContent;
+
+            let numQuantt = e.target.parentElement.children[0].textContent;
+            console.log(numQuantt)
+            if (numQuantt < parseInt(stockNbOri + numQuantt)){
+
+                let reNbqtt = parseInt(numQuantt);
+                e.target.parentElement.children[0].textContent = reNbqtt + 1;
+                
+                e.target.closest('.boxbottom').children[1].textContent = editOriNbPrice * parseInt(numQuantt)+1 + '$';
+                cardInf.children[1].children[0].textContent = stockNbOri -1;
+            }
+        }
+
+    } 
+}
+
+// ____________________deleteAddToCartBox_______________________
+function deletAddToCart(e){
+    confirm('Do you want to delet>?');
+    if (confirm = true){
+        e.target.closest('.boxAddtoCart').remove();
+    }
+}
+
 
 loadSaveProductData();
 dispalyProCard();
