@@ -6,6 +6,7 @@ let proData = [
     // { name: 'Wall Clock', nbStock: 10, price: 4 },
     // { name: 'All in one citrus upholstery cleaner', nbStock: 10, price: 3 },
 ];
+const historyData = [];
 
 const cardSide = document.querySelector('.cardSide');
 const addProIcons = document.querySelector('.addProIcon');
@@ -16,7 +17,13 @@ const stockPro = document.querySelector('#stock');
 const pricePro = document.querySelector('#price');
 const btncancelCreatePage = document.querySelector('#btnCancel');
 const btnCreateProPage = document.querySelector('#btnCreate');
-const addToCartPage = document.querySelector('.addToCart-side');
+let addToCartPage = document.querySelector('.addToCart-side');
+const btnCheckTotal = document.querySelector('.btnConfirm');
+let checkOutPage = document.querySelector('.checkOutPage')
+let payBtn = document.querySelector('#btnPay')
+
+payBtn.addEventListener('click', checkOutPagebtn)
+
 
 // _______________________ShowPage_______________________
 function show(element) {
@@ -31,11 +38,22 @@ addProIcons.addEventListener('click', () => {
     show(createProPage);
 });
 
-btncancelCreatePage.addEventListener('click', ()=> {
+btncancelCreatePage.addEventListener('click', () => {
     hide(createProPage);
 });
 
-function getDataFromCrePrPg(){
+btnCheckTotal.addEventListener('click', totalCheck);
+
+// __________________ClickToCreateCardProduct__________________
+btnCreateProPage.addEventListener('click', () => {
+    getDataFromCrePrPg();
+    namePro.value = '';
+    categoriesPro.value = '';
+    stockPro.value = '';
+    pricePro.value = '';
+    hide(createProPage);
+})
+function getDataFromCrePrPg() {
     storeData = {};
     storeData.name = namePro.value;
     storeData.categories = categoriesPro.value;
@@ -47,15 +65,6 @@ function getDataFromCrePrPg(){
     location.reload();
 }
 
-// __________________ClickToCreateCardProduct__________________
-btnCreateProPage.addEventListener('click', ()=> { 
-    getDataFromCrePrPg();
-    namePro.value = '';
-    categoriesPro.value = '';
-    stockPro.value = '';
-    pricePro.value = '';
-    hide(createProPage);
-})
 
 // _______________________________SaveCreatDataToLocalStorage___________________
 function saveProductData() {
@@ -71,10 +80,12 @@ function loadSaveProductData() {
 // ________________________________DisplayCardProduct________________________
 function dispalyProCard() {
     hide(createProPage)
+    hide(checkOutPage);
     i = 0;
     for (let dataPro of proData) {
         let card = document.createElement('div');
         card.classList.add('card');
+        card.classList.add(dataPro.categories);
 
         let namePro = document.createElement('h2');
         namePro.textContent = dataPro.name;
@@ -182,75 +193,103 @@ function disPlayAddToCart(e) {
         boxAddToCart.appendChild(boxTop);
         boxAddToCart.appendChild(boxBottom);
         addToCartPage.appendChild(boxAddToCart);
-    }
 
+    }
 }
 
 // ___________________________MinuxQuantityAddToCartBox______________________________
-function minusQuanttNb(e){
+function minusQuanttNb(e) {
     let allCardInf = document.querySelectorAll('.card');
     let titleAddCart = e.target.closest('.boxAddtoCart').children[0].children[0].textContent;
     let numQuantt = e.target.parentElement.children[0].textContent;
 
-    for (cardInf of allCardInf){
+    for (cardInf of allCardInf) {
         let oriTitleCard = cardInf.children[0].textContent;
-        if (oriTitleCard === titleAddCart){
+        if (oriTitleCard === titleAddCart) {
             let oriPrice = cardInf.children[2].children[0].textContent;
 
             let stockNb = cardInf.children[1].children[0].textContent;
-            let oriNumPrice = oriPrice.slice(0, oriPrice.length-1);
+            let oriNumPrice = oriPrice.slice(0, oriPrice.length - 1);
 
             let priceAddToCart = e.target.closest('.boxbottom').children[1].textContent;
-            let prAddToCart = priceAddToCart.slice(0, priceAddToCart.length-1);
-            if (numQuantt > 0){
+            let prAddToCart = priceAddToCart.slice(0, priceAddToCart.length - 1);
+            if (numQuantt > 0) {
                 numQuantt -= 1
                 e.target.parentElement.children[0].textContent = numQuantt;
 
                 cardInf.children[1].children[0].textContent = parseInt(stockNb) + 1;
 
                 e.target.closest('.boxbottom').children[1].textContent = prAddToCart - oriNumPrice + '$';
-            }else{
+            } else {
                 e.target.closest('.boxAddtoCart').remove();
             };
-        }  
-    }   
+        }
+    }
 }
 
 // ___________________________PlusQuantityAddToCartBox_________________________
-function plusQuanttNb(e){
+function plusQuanttNb(e) {
     let allCardInf = document.querySelectorAll('.card');
     let titleAddCart = e.target.closest('.boxAddtoCart').children[0].children[0].textContent;
-    for (cardInf of allCardInf){
+    for (cardInf of allCardInf) {
         let oriTitleCard = cardInf.children[0].textContent;
         let oriNbPrice = cardInf.children[2].children[0].textContent;
-        let editOriNbPrice = oriNbPrice.slice(0, oriNbPrice.length-1)
+        let editOriNbPrice = oriNbPrice.slice(0, oriNbPrice.length - 1)
         console.log(oriNbPrice)
-        if (oriTitleCard === titleAddCart){
-            
+        if (oriTitleCard === titleAddCart) {
+
             let stockNbOri = cardInf.children[1].children[0].textContent;
 
             let numQuantt = e.target.parentElement.children[0].textContent;
             console.log(numQuantt)
-            if (numQuantt < parseInt(stockNbOri + numQuantt)){
+            if (numQuantt < parseInt(stockNbOri + numQuantt)) {
 
                 let reNbqtt = parseInt(numQuantt);
                 e.target.parentElement.children[0].textContent = reNbqtt + 1;
-                
-                e.target.closest('.boxbottom').children[1].textContent = editOriNbPrice * parseInt(numQuantt)+1 + '$';
-                cardInf.children[1].children[0].textContent = stockNbOri -1;
+
+                e.target.closest('.boxbottom').children[1].textContent = editOriNbPrice * parseInt(numQuantt) + 1 + '$';
+                cardInf.children[1].children[0].textContent = stockNbOri - 1;
             }
         }
 
-    } 
+    }
 }
 
 // ____________________deleteAddToCartBox_______________________
-function deletAddToCart(e){
-    confirm('Do you want to delet>?');
-    if (confirm = true){
-        e.target.closest('.boxAddtoCart').remove();
-    }
+function deletAddToCart(e) {
+    e.target.closest('.boxAddtoCart').remove();
 }
+
+// _______________________totaleOfAllProduct______________________
+
+let itemCheckOutPage = document.querySelector('.item')
+function totalCheck(e) {
+    show(checkOutPage);
+    let boxAddToCart = e.target.closest('.addToCart').children[0].children;
+    let total = document.querySelector('.total');
+    let sumPrice = 0;
+    for (dTCbox of boxAddToCart) {
+        let proName = dTCbox.children[0].children[0].textContent;
+        let price = dTCbox.children[1].children[1].textContent;
+        let cutPrice = price.slice(0, price.length -1)
+        sumPrice += parseInt(cutPrice);
+
+        let spanItem = document.createElement('span');
+        spanItem.classList.add('spanItem')
+        let namePro = document.createElement('p')
+        namePro.textContent = proName;
+        let spanPrice = document.createElement('span');
+        spanPrice.textContent = price;
+
+        spanItem.append(namePro);
+        spanItem.append(spanPrice);
+        itemCheckOutPage.appendChild(spanItem);
+
+    }
+    total.children[1].textContent = sumPrice + '$';
+}
+
+// __________________checkOutAndGetValueToDisplayAtHistoryPage___________________
 
 
 loadSaveProductData();
