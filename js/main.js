@@ -290,6 +290,32 @@ function totalCheck(e) {
 }
 
 // __________________checkOutAndGetValueToDisplayAtHistoryPage___________________
+let pageCheckout = document.querySelector('.checkOutPage')
+function checkOutPagebtn(e){
+    hide(pageCheckout)
+    let beHistory = {}
+    let checkoutItem = document.querySelectorAll('.spanItem');
+    let customerName = document.querySelector('#cusomerName');
+    let storeItem = '';
+    let cusName = customerName.value;
+    console.log(cusName)
+    let total = e.target.parentElement.children[0].children[1].textContent
+    for (item of checkoutItem){
+
+        let namePro = item.children[0].textContent;
+        let pricePro = item.children[1].textContent;
+        storeItem += (namePro + ":" + pricePro + '/ ');
+
+        item.remove();
+    }
+    
+    beHistory.customerName = cusName;
+    beHistory.allProName = storeItem;
+    beHistory.total = total;
+
+    historyData.push(beHistory);
+    console.log(historyData) 
+}
 
 
 loadSaveProductData();
