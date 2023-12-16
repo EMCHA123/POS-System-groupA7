@@ -3,7 +3,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Arial;
     list-style: none;
     text-decoration: none;
 }
@@ -65,7 +65,8 @@ nav .nav-logo{
     height: 30%;
 }
 .nav-logo h1{
-    background-color: #d73a3a;
+    background-color: #fff;
+    color: black;
 }
 nav ul li{
     display: flex;
@@ -79,6 +80,15 @@ nav ul li:hover{
 nav ul li a{
    color: #fff;
    margin-left: 5px;
+}
+
+#dashboad{
+    /* background: #000000; */
+    opacity: 1;
+}
+
+#history{
+    opacity: 1;
 }
 
 .dashboad_sold{
