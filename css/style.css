@@ -23,13 +23,27 @@ i{
     display: flex;
     justify-content: end;
     align-items: center;
+    background-color: #474444;
+}
+.bar-top .addProIcon{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0px 5px;
+    margin: 0px 5px;
     background-color: black;
+    color: #fff;
+    overflow: hidden;
+}
+.addProIcon i{
+    border-right: 1px solid white;
+    border-radius: 50px;
 }
 .bar-top input{
-    width: 30%;
+    width: 20%;
     padding: 8px;
     margin-right:10px ;
-    border-radius: 10px;
+    border-radius: 20px;
     border: 0;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 }
@@ -54,7 +68,6 @@ nav .nav-logo{
     display: flex;
     align-items: end;
     padding: 10px 5px 15px 5px;
-    border-top: 2px solid #fff;
 }
 .nav-logo img{
     width: 30%;
@@ -129,7 +142,7 @@ nav ul li a{
     background-color: aqua;
     color: #222;
 }
-.cardSide .card{
+.cardSide .card {
     width: 45%;
     height:auto;
     margin: 10px;
@@ -141,6 +154,7 @@ nav ul li a{
     transition: 0.5s;
 
 }
+
 .card:hover{
     width: 48%;
     transition: 0.5s;

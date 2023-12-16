@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=, initial-scale=1.0"> -->
     <title>POS</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js" defer></script>
 </head>
-
 <body>
     <div class="container">
         <div class="bar-top">
-            <input type="text" name="" placeholder="Seach" id="seach">
             <div class="addProIcon">
                 <i class="material-icons">add</i>
+                <P style="padding: 10px;">Add product</P>
             </div>
+            <input type="text" name="" placeholder="Seach" id="seach">
         </div>
         <div class="content">
             <nav>
@@ -34,10 +32,12 @@
             <div class="product-side">
                 <div class="cartPro-side">
                     <div class="categories">
-                        <span>All product</span>
-                        <span>Foods</span>
-                        <span>Fruits</span>
-                        <span>Drinks</span>
+                        <select name="" id="categories">
+                            <option>All product</option>
+                            <option>Foods</option>
+                            <option>Fruits</option>
+                            <option>Drinks</option>
+                        </select>
                     </div>
                     <div class="cardSide">
 
@@ -68,10 +68,10 @@
                 <input type="text" name="" id="name">
             </span>
             <span>Categories:
-                <select name="" id="categories">
-                    <option value="food">Food</option>
-                    <option value="drink">Drink</option>
-                    <option value="fruit">Fruit</option>
+                <select name="" id="categorY">
+                    <option>Foods</option>
+                    <option>Fruits</option>
+                    <option>Drinks</option>
                 </select>
             </span>
             <span>Stock:
@@ -105,5 +105,4 @@
         </div>
     </div>
 </body>
-
 </html>

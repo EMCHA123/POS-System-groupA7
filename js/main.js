@@ -12,18 +12,16 @@ const cardSide = document.querySelector('.cardSide');
 const addProIcons = document.querySelector('.addProIcon');
 const createProPage = document.querySelector('.createProPage');
 const namePro = document.querySelector('#name');
-const categoriesPro = document.querySelector('#categories');
+const categoriesPro = document.querySelector('#categorY');
 const stockPro = document.querySelector('#stock');
 const pricePro = document.querySelector('#price');
 const btncancelCreatePage = document.querySelector('#btnCancel');
 const btnCreateProPage = document.querySelector('#btnCreate');
 let addToCartPage = document.querySelector('.addToCart-side');
 const btnCheckTotal = document.querySelector('.btnConfirm');
-let checkOutPage = document.querySelector('.checkOutPage')
-let payBtn = document.querySelector('#btnPay')
-
-payBtn.addEventListener('click', checkOutPagebtn)
-
+let checkOutPage = document.querySelector('.checkOutPage');
+let payBtn = document.querySelector('#btnPay');
+let choiseCategories = document.querySelector('#categories');
 
 // _______________________ShowPage_______________________
 function show(element) {
@@ -33,6 +31,26 @@ function show(element) {
 function hide(element) {
     element.style.display = 'none';
 }
+
+// _____________________CategoriesShow___________________
+choiseCategories.addEventListener('change', (e) =>{
+    let allCard = document.querySelectorAll('.card')
+    let name = e.target.value
+    console.log(name)
+    for (food of allCard){
+        let category = food.className
+        let cutCategory = category.slice(5, category.length)
+        if (name === cutCategory || name === 'All product'){
+            console.log(cutCategory)
+            food.style.display = 'flex';   
+        }else{
+            food.style.display = 'none'
+        }
+    }
+})
+
+
+payBtn.addEventListener('click', checkOutPagebtn);
 
 addProIcons.addEventListener('click', () => {
     show(createProPage);
@@ -53,6 +71,8 @@ btnCreateProPage.addEventListener('click', () => {
     pricePro.value = '';
     hide(createProPage);
 })
+
+
 function getDataFromCrePrPg() {
     storeData = {};
     storeData.name = namePro.value;
@@ -60,7 +80,6 @@ function getDataFromCrePrPg() {
     storeData.nbStock = stockPro.value;
     storeData.price = pricePro.value;
     proData.push(storeData);
-    console.log(proData);
     saveProductData();
     location.reload();
 }
@@ -70,11 +89,12 @@ function getDataFromCrePrPg() {
 function saveProductData() {
     localStorage.setItem('productData', JSON.stringify(proData));
 };
-
+// localStorage.clear()
 // ___________________________LoadDataFromLocalStorage___________________
 function loadSaveProductData() {
     let getStorage = JSON.parse(localStorage.getItem('productData'));
     proData = getStorage != null ? getStorage : proData;
+    console.log(proData)
 }
 
 // ________________________________DisplayCardProduct________________________
@@ -85,6 +105,7 @@ function dispalyProCard() {
     for (let dataPro of proData) {
         let card = document.createElement('div');
         card.classList.add('card');
+        console.log(dataPro.categories)
         card.classList.add(dataPro.categories);
 
         let namePro = document.createElement('h2');
@@ -308,7 +329,6 @@ function checkOutPagebtn(e){
 
         item.remove();
     }
-    
     beHistory.customerName = cusName;
     beHistory.allProName = storeItem;
     beHistory.total = total;
@@ -316,7 +336,5 @@ function checkOutPagebtn(e){
     historyData.push(beHistory);
     console.log(historyData) 
 }
-
-
 loadSaveProductData();
 dispalyProCard();
