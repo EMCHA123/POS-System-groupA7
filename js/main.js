@@ -17,11 +17,12 @@ const stockPro = document.querySelector('#stock');
 const pricePro = document.querySelector('#price');
 const btncancelCreatePage = document.querySelector('#btnCancel');
 const btnCreateProPage = document.querySelector('#btnCreate');
-let addToCartPage = document.querySelector('.addToCart-side');
 const btnCheckTotal = document.querySelector('.btnConfirm');
+let addToCartPage = document.querySelector('.addToCart-side');
 let checkOutPage = document.querySelector('.checkOutPage');
 let payBtn = document.querySelector('#btnPay');
 let choiseCategories = document.querySelector('#categories');
+
 
 // _______________________ShowPage_______________________
 function show(element) {
@@ -42,7 +43,7 @@ choiseCategories.addEventListener('change', (e) =>{
         let cutCategory = category.slice(5, category.length)
         if (name === cutCategory || name === 'All product'){
             console.log(cutCategory)
-            food.style.display = 'flex';   
+            food.style.display = 'block';   
         }else{
             food.style.display = 'none'
         }
@@ -94,7 +95,6 @@ function saveProductData() {
 function loadSaveProductData() {
     let getStorage = JSON.parse(localStorage.getItem('productData'));
     proData = getStorage != null ? getStorage : proData;
-    console.log(proData)
 }
 
 // ________________________________DisplayCardProduct________________________
@@ -105,7 +105,6 @@ function dispalyProCard() {
     for (let dataPro of proData) {
         let card = document.createElement('div');
         card.classList.add('card');
-        console.log(dataPro.categories)
         card.classList.add(dataPro.categories);
 
         let namePro = document.createElement('h2');
@@ -338,3 +337,8 @@ function checkOutPagebtn(e){
 }
 loadSaveProductData();
 dispalyProCard();
+// ________________________SearchProduct________________________
+let allCardSearch = document.querySelectorAll('.card');
+for (card of allCardSearch){
+    console.log(card)
+}
