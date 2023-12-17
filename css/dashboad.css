@@ -86,12 +86,7 @@ nav ul li a{
     opacity: 1;
 }
 
-#history{
-    opacity: 1;
-}
-
 .dashboad_sold{
-    /* background:rgb(209, 229, 236); */
     width: 10%;
     height: 91vh;
     display: flex;
@@ -159,7 +154,12 @@ th{
     color: white;
 }
 
+tbody:nth-child(odd){
+    background-color: turquoise;
+}
+
 h2{
     padding:30px 0px 10px 0px;
 }
+
 
