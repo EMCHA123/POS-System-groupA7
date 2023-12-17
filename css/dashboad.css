@@ -146,7 +146,7 @@ table {
   
 td, th {
     border: 1px solid rgb(53, 43, 172);
-    text-align: left;
+    text-align:center;
     padding: 8px;
 }
 th{

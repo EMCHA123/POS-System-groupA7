@@ -69,6 +69,7 @@ function display_data(){
         //..........amount.......
         let th_amount = document.createElement('th');
         th_amount.textContent = pro.total;
+        let th_
 
         //list_product
         table.appendChild(tbody)
@@ -91,10 +92,10 @@ function display_card(){
     let stock = 0;
     let category = 0;
     for(let prodcut of proData){
-        if(prodcut.categories == 'fruit'){
+        if(prodcut.categories == 'Fruits'){
             category++;
         }
-        if(prodcut.categories == 'Drink'){
+        if(prodcut.categories == 'Drinks'){
             category ++;
         }
         if(prodcut.categories == 'Foods'){
