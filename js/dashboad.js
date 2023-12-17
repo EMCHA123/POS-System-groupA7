@@ -9,6 +9,13 @@ function loadSaveProductData() {
     // console.log(proData);
 }
 
+function laodgetProductDara(){
+    let storage_total = JSON.parse(localStorage.getItem('productData'));
+    prodcutData = storage_total != null? storage_total : prodcutData;
+    // console.log(prodcutData);
+}   
+
+
 function display_data(){
     let list = 1;
     for(prodcut of proData){
@@ -66,5 +73,6 @@ function display_card(){
 }
 
 loadSaveProductData();
+laodgetProductDara()
 display_data();
 display_card();
