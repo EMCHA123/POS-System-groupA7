@@ -41,9 +41,6 @@ function display_data(){
 }
 
 function display_card(){
-    let inStock = document.querySelector('.inStock2');
-    
-    console.log(inStock);
     let stock = 0;
     let category = 0;
     for(let prodcut of proData){
@@ -60,15 +57,12 @@ function display_card(){
             category = stock;
         }
         stock ++;
+        
         let inStock_span = document.querySelector('span');
         inStock_span.textContent = stock;
-        
-
+        let category_span = document.querySelector('.span1');
+        category_span.textContent = category;
     }
-    let category_span = document.createElement('span');
-    category_span.textContent = category;
-    inStock.appendChild(category_span);
-    
 }
 
 loadSaveProductData();

@@ -83,7 +83,6 @@ nav ul li a{
 }
 
 #dashboad{
-    /* background: #000000; */
     opacity: 1;
 }
 
@@ -126,6 +125,7 @@ span{
     font-weight: bold;
     color: white;
 }
+
 p{
     color: white;
 }
@@ -147,14 +147,19 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width:91%;
-  }
+}
   
-  td, th {
+td, th {
     border: 1px solid rgb(53, 43, 172);
     text-align: left;
     padding: 8px;
-  }
-  h2{
+}
+th{
+    background: teal;
+    color: white;
+}
+
+h2{
     padding:30px 0px 10px 0px;
-  }
+}
 
