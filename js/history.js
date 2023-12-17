@@ -1,15 +1,23 @@
 function loadSaveProductData() {
     productData = JSON.parse(localStorage.getItem('productData'));
-    console.log(productData)
+    
 }
 loadSaveProductData()
 
 let table = document.createElement("table");
 
+let tbody = document.createElement('tbody');
+table.appendChild(tbody);
+
+let historyTitle = document.createElement('h2');
+historyTitle.classList='historyH2';
+historyTitle.textContent= 'History';
+tbody.appendChild(historyTitle);
+
 // Create a table row
 let row = document.createElement("tr");
-// Add the row to the table
-table.appendChild(row);
+row.className='row1'
+tbody.appendChild(row);
 
 // Create table headers
 let header1 = document.createElement("th");
@@ -40,8 +48,7 @@ function sailed() {
 
     // Create data rows
     let dataRow1 = document.createElement("tr");
-    table.appendChild(dataRow1);
-
+    tbody.appendChild(dataRow1);
     let data1 = document.createElement("td");
     data1.textContent = "id";
     dataRow1.appendChild(data1);
@@ -67,5 +74,9 @@ function sailed() {
     dataRow1.appendChild(data6);
 }
 let addtable = document.createElement('div');
+addtable.textContent = 'add';
 addtable.addEventListener('click', sailed)
-document.body.appendChild(table);
+row.appendChild(addtable);
+
+let content = document.querySelector('.content');
+content.appendChild(table);
