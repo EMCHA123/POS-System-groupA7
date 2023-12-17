@@ -246,7 +246,6 @@ function minusQuanttNb(e) {
         }
     }
 }
-
 // ___________________________PlusQuantityAddToCartBox_________________________
 function plusQuanttNb(e) {
     let allCardInf = document.querySelectorAll('.card');
@@ -304,7 +303,6 @@ function totalCheck(e) {
         spanItem.append(namePro);
         spanItem.append(spanPrice);
         itemCheckOutPage.appendChild(spanItem);
-
     }
     total.children[1].textContent = sumPrice + '$';
 }
@@ -318,7 +316,6 @@ function checkOutPagebtn(e){
     let customerName = document.querySelector('#cusomerName');
     let storeItem = '';
     let cusName = customerName.value;
-    console.log(cusName)
     let total = e.target.parentElement.children[0].children[1].textContent
     for (item of checkoutItem){
 
@@ -333,12 +330,28 @@ function checkOutPagebtn(e){
     beHistory.total = total;
 
     historyData.push(beHistory);
-    console.log(historyData) 
+    saveHistoyData()  
 }
+function saveHistoyData(){
+    console.log(historyData)
+    localStorage.setItem('dataHistory', JSON.stringify(historyData))
+}
+
+
 loadSaveProductData();
 dispalyProCard();
 // ________________________SearchProduct________________________
 let allCardSearch = document.querySelectorAll('.card');
-for (card of allCardSearch){
-    console.log(card)
-}
+let search = document.querySelector('#seach');
+search.addEventListener('keyup', (e)=>{
+    let chatSearch = e.target.value;
+    console.log(chatSearch)
+    for (card of allCardSearch){
+        let cardName = card.children[0].textContent;
+        if (cardName.indexOf(chatSearch) !== -1){
+            card.style.display = 'block';
+        }else{
+            card.style.display = 'none';
+        }
+    }
+})
