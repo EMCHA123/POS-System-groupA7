@@ -107,6 +107,18 @@ table {
 }
 table tr:nth-child(even) {
     background-color:  rgb(27, 155, 211);
+
+    color: #fff;
+}
+table tr:hover {
+    background-color:  palevioletred;
+    color: #fff;
+}
+table tr th {
+    background: teal;
+    padding: 15px;
+    text-align: center;
+
     color: #fff;
 }
 table tr:hover {
@@ -122,6 +134,24 @@ table tr th {
 table tr td {
     border: 1px solid gray;
     padding: 8px 5px;
+
+}
+tr img{
+    width: 15px;
+    height: 16px;
+}
+.td_product{
+    width: auto;
+    height: auto;
+<<<<<<< HEAD
+}
+=======
+}
+
+
+table tr td {
+    border: 1px solid gray;
+    padding: 8px 5px;
 }
 tr img{
     width: 15px;
@@ -131,3 +161,5 @@ tr img{
     width: auto;
     height: auto;
 }
+
+>>>>>>> 001fc0eb096ea0344218844ce963d39c2ed333c0
