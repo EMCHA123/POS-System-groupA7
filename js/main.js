@@ -311,7 +311,6 @@ function totalCheck(e) {
 let pageCheckout = document.querySelector('.checkOutPage')
 function checkOutPagebtn(e){
     hide(pageCheckout)
-    let beHistory = {}
     let checkoutItem = document.querySelectorAll('.spanItem');
     let customerName = document.querySelector('#cusomerName');
     let storeItem = '';
@@ -325,18 +324,14 @@ function checkOutPagebtn(e){
 
         item.remove();
     }
+    let beHistory = {}
     beHistory.customerName = cusName;
     beHistory.allProName = storeItem;
     beHistory.total = total;
-
     historyData.push(beHistory);
-    console.log(historyData);
-    saveHistoyData()  
+    saveHistoyData() 
+    // location.reload(); 
 }
-function saveHistoyData(){
-    localStorage.setItem('dataHistory', JSON.stringify(historyData));
-}
-
 
 loadSaveProductData();
 dispalyProCard();
@@ -345,7 +340,6 @@ let allCardSearch = document.querySelectorAll('.card');
 let search = document.querySelector('#seach');
 search.addEventListener('keyup', (e)=>{
     let chatSearch = e.target.value;
-    console.log(chatSearch)
     for (card of allCardSearch){
         let cardName = card.children[0].textContent;
         if (cardName.indexOf(chatSearch) !== -1){
@@ -355,3 +349,11 @@ search.addEventListener('keyup', (e)=>{
         }
     }
 })
+function saveHistoyData(){
+    localStorage.setItem('dataHistory', JSON.stringify(historyData));
+}
+function loadSaveHisData() {
+    let getStoragehis = JSON.parse(localStorage.getItem('dataHistory'));
+    historyData = getStoragehis != null ? getStoragehis : historyData;
+}
+loadSaveHisData()
