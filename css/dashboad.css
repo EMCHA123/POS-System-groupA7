@@ -24,14 +24,14 @@ i{
     display: flex;
     justify-content: end;
     align-items: center;
-    background-color: black;
+    background-color: #474444;
     position: fixed;
 }
 .bar-top input{
     width: 30%;
     padding: 8px;
     margin-right:10px ;
-    border-radius: 10px;
+    border-radius: 20px;
     border: 0;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 }
@@ -58,7 +58,6 @@ nav .nav-logo{
     display: flex;
     align-items: end;
     padding: 10px 5px 15px 5px;
-    border-top: 2px solid #fff;
 }
 .nav-logo img{
     width: 30%;
