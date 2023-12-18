@@ -90,7 +90,7 @@ function getDataFromCrePrPg() {
 function saveProductData() {
     localStorage.setItem('productData', JSON.stringify(proData));
 };
-// localStorage.clear()
+
 // ___________________________LoadDataFromLocalStorage___________________
 function loadSaveProductData() {
     let getStorage = JSON.parse(localStorage.getItem('productData'));
@@ -330,11 +330,11 @@ function checkOutPagebtn(e){
     beHistory.total = total;
 
     historyData.push(beHistory);
+    console.log(historyData);
     saveHistoyData()  
 }
 function saveHistoyData(){
-    console.log(historyData)
-    localStorage.setItem('dataHistory', JSON.stringify(historyData))
+    localStorage.setItem('dataHistory', JSON.stringify(historyData));
 }
 
 
