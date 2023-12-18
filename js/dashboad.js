@@ -8,11 +8,11 @@ function loadSaveProductData() {
     console.log(proData);
 }
 
-// function laodgetProductDara(){
-//     let storage_total = JSON.parse(localStorage.getItem('dataHistory'));
-//     prodcutData = storage_total != null? storage_total : prodcutData;
-//     console.log(prodcutData);
-// }   
+function laodgetProductDara(){
+    let storage_total = JSON.parse(localStorage.getItem('dataHistory'));
+    prodcutData = storage_total != null? storage_total : prodcutData;
+    console.log(prodcutData);
+}   
 
 function display_data(){
     let list = 1;
@@ -43,6 +43,39 @@ function display_data(){
         tr1.appendChild(add_price);
         list ++;
     }  
+    for(pro of prodcutData){
+
+        //list_product
+        let tbody = document.createElement('tbody');
+        let tr1 = document.createElement('tr');
+        let th = document.createElement('td')
+        th.textContent = list;
+       
+        // add_dat from localstorage
+        let td_data1 = document.createElement('td');
+        td_data1.textContent = prodcut.name;
+        let add_categary = document.createElement('td');
+        add_categary.textContent = prodcut.categories;
+        let add_price = document.createElement('td');
+        add_price.textContent = prodcut.price +'$';
+        //....add_total....
+        let th_total = document.createElement('th');
+        th_total.textContent = pro.total;
+        
+        //list_product
+        table.appendChild(tbody)
+        tbody.appendChild(tr1);
+        tr1.appendChild(th);
+
+        //add_data from localstorage
+        tr1.appendChild(td_data1);
+        tr1.appendChild(add_categary);
+        tr1.appendChild(add_price);
+        list ++;
+
+        //.....add_total..
+        tr1.appendChild(th_total);
+    }  
 }
 
 function display_card(){
@@ -71,6 +104,6 @@ function display_card(){
 }
 
 loadSaveProductData();
-// laodgetProductDara()
+laodgetProductDara()
 display_data();
 display_card();
