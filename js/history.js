@@ -29,6 +29,19 @@ function diplayTable() {
 
         let imgdelet = document.createElement('img');
         imgdelet.src = '../img/deleteicon.png';
+        // // ............function remove...........
+
+        function removeDataFromLocalStorage() {
+            localStorage.removeItem('dataHistory');
+        }
+
+        imgdelet.addEventListener('click', (e) => {
+            if (window.confirm('Are you sure to remove?')) {
+                e.target.closest('tr').remove();
+                removeDataFromLocalStorage();
+            }
+        });
+
 
         td_delet.appendChild(imgdelet)
         tr.appendChild(td_id);
@@ -43,3 +56,18 @@ function diplayTable() {
 let tablebody = document.querySelector('tbody');
 
 diplayTable();
+// ...............search.................
+let search = document.querySelector('#seach');
+let trHis = document.querySelectorAll('tbody tr');
+search.addEventListener('keyup', (e) => {
+    let searchCha = e.target.value;
+    for (trs of trHis) {
+        let wordTr = trs.children[1].textContent;
+        if (wordTr.indexOf(searchCha) !== -1) {
+            trs.style.display = 'table-row';
+        } else {
+            trs.style.display = 'none'
+        }
+
+    }
+})
