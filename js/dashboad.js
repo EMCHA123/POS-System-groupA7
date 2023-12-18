@@ -32,50 +32,32 @@ function display_data(){
         let add_price = document.createElement('td');
         add_price.textContent = prodcut.price +'$';
         
-        //list_product
+        //......list_product......
         table.appendChild(tbody)
         tbody.appendChild(tr1);
         tr1.appendChild(th);
 
-        //add_data from localstorage
+        //...add_data from localstorage...
         tr1.appendChild(td_data1);
         tr1.appendChild(add_categary);
         tr1.appendChild(add_price);
         list ++;
-    }  
-    for(pro of prodcutData){
-
-        //list_product
-        let tbody = document.createElement('tbody');
-        let tr1 = document.createElement('tr');
-        let th = document.createElement('td')
-        th.textContent = list;
-       
-        // add_dat from localstorage
-        let td_data1 = document.createElement('td');
-        td_data1.textContent = prodcut.name;
-        let add_categary = document.createElement('td');
-        add_categary.textContent = prodcut.categories;
-        let add_price = document.createElement('td');
-        add_price.textContent = prodcut.price +'$';
-        //....add_total....
-        let th_total = document.createElement('th');
-        th_total.textContent = pro.total;
+    } 
+    let sum = 0
+    for (let pro of prodcutData){
+        let i=0;
+        let income_span = document.querySelector('.income');
+        let total = income_span.textContent;
+        console.log(pro.total)
         
-        //list_product
-        table.appendChild(tbody)
-        tbody.appendChild(tr1);
-        tr1.appendChild(th);
+        sumTotal =parseInt(total) + parseInt(pro.total);
+        console.log(sumTotal)
+        income_span.textContent = sumTotal + '$';
+        if(income_span.pro){
+            i++
+        }
+    } 
 
-        //add_data from localstorage
-        tr1.appendChild(td_data1);
-        tr1.appendChild(add_categary);
-        tr1.appendChild(add_price);
-        list ++;
-
-        //.....add_total..
-        tr1.appendChild(th_total);
-    }  
 }
 
 function display_card(){
@@ -91,7 +73,7 @@ function display_card(){
         if(prodcut.categories == 'Foods'){
             category ++;
         }
-        if(prodcut.categories==prodcut.categories){
+        if(prodcut.categories == prodcut.categories){
             category = stock;
         }
         stock ++;
