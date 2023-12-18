@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <title>POS</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <link rel="stylesheet" href="../css/dashboad.css">
+    <script src="../js/dashboad.js" defer></script>
 </head>
-
 <body>
     <div class="container">
         <div class="bar-top">
@@ -21,20 +22,58 @@
                 </div>
                 <ul>
                     <li><i class="material-icons">shopping_cart</i><a href="../index.html">Product</a></li>
-                    <li><i class="material-icons">view_quilt</i><a href="./dashboad.html">Dashboad</a> </li>
+                    <li id="dashboad"><i class="material-icons">view_quilt</i><a href="./dashboad.html">Dashboad</a> </li>
                     <li><i class="material-icons">settings_backup_restore</i><a href="./history.html">History</a></li>
                 </ul>
             </nav>
-            <div class="product-side">
-                <div class="cartPro-side">
-                    <!-- <To do_______________________________________ -->
+            <div class="dashboad_sold">
+                <div class="top_product">
+                    <div class="card card1">
+                        <div class="inStock1">
+                            <p>In Stock</p>
+                            <span>0</span>
+                        </div>
+                        <ion-icon name="bag-handle-outline"></ion-icon>
+                    </div>
+                    <div class="card card2">
+                        <div class="inStock2">
+                            <p>Category</p>
+                            <span class="span1">0</span>
+                        </div>
+                        <ion-icon name="apps-outline"></ion-icon>
+                    </div>
+                    <div class="card card3">
+                        <div class="inStock3">
+                            <p>Sold Out</p>
+                            <span>190</span>
+                        </div>
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </div>
+                    <div class="card card4">
+                        <div class="inStock4">
+                            <p>Income</p>
+                            <span>4100</span>
+                        </div>
+                        <ion-icon name="cash-outline"></ion-icon>
+                    </div>
                 </div>
-                <div class="addToCart-side">
-                    <!-- To do__________________________________________ -->
-                </div>
+            </div>
+            <div class="sold_product">
+                <h2>Top sold product</h2>
+                <table>
+                    <thead>
+                         <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Categary</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                            <th>Sell progress</th>
+                         </td>
+                    </thead>
+                 </table>
             </div>
         </div>
     </div>
 </body>
-
 </html>
