@@ -6,7 +6,7 @@ let proData = [
     // { name: 'Wall Clock', nbStock: 10, price: 4 },
     // { name: 'All in one citrus upholstery cleaner', nbStock: 10, price: 3 },
 ];
-const historyData = [];
+let historyData = [];
 
 const cardSide = document.querySelector('.cardSide');
 const addProIcons = document.querySelector('.addProIcon');
@@ -324,6 +324,8 @@ function checkOutPagebtn(e){
 
         item.remove();
     }
+    
+    console.log(historyData);
     let beHistory = {}
     beHistory.customerName = cusName;
     beHistory.allProName = storeItem;
@@ -357,3 +359,4 @@ function loadSaveHisData() {
     historyData = getStoragehis != null ? getStoragehis : historyData;
 }
 loadSaveHisData()
+console.log(historyData);
