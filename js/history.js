@@ -1,82 +1,45 @@
-function loadSaveProductData() {
-    productData = JSON.parse(localStorage.getItem('productData'));
-    
+function loadSaveHisData() {
+    let getStoragehis = JSON.parse(localStorage.getItem('dataHistory'));
+    historyData = getStoragehis != null ? getStoragehis : historyData;
+    console.log(historyData)
 }
-loadSaveProductData()
+loadSaveHisData()
 
-let table = document.createElement("table");
+function diplayTable() {
+    console.log(historyData)
+    let list = 1;
+    for (his of historyData) {
 
-let tbody = document.createElement('tbody');
-table.appendChild(tbody);
+        let tr = document.createElement('tr');
 
-let historyTitle = document.createElement('h2');
-historyTitle.classList='historyH2';
-historyTitle.textContent= 'History';
-tbody.appendChild(historyTitle);
+        let td_id = document.createElement('td');
+        td_id.textContent = list;
 
-// Create a table row
-let row = document.createElement("tr");
-row.className='row1'
-tbody.appendChild(row);
+        let td_customerName = document.createElement('td');
+        td_customerName.textContent = his.customerName;
 
-// Create table headers
-let header1 = document.createElement("th");
-header1.textContent = "ID";
-row.appendChild(header1);
+        let td_product = document.createElement('td');
+        td_product.classList.add('td_product')
+        td_product.textContent = his.allProName;
 
-let header2 = document.createElement("th");
-header2.textContent = "Costomer Name";
-row.appendChild(header2);
+        let td_total = document.createElement('td');
+        td_total.textContent = his.total
 
-let header3 = document.createElement("th");
-header3.textContent = "product Name";
-row.appendChild(header3);
+        let td_delet = document.createElement('td');
 
-let header4 = document.createElement("th");
-header4.textContent = "Category";
-row.appendChild(header4);
+        let imgdelet = document.createElement('img');
+        imgdelet.src = '../img/deleteicon.png';
 
-let header5 = document.createElement("th");
-header5.textContent = "Quantity";
-row.appendChild(header5);
-
-let header6 = document.createElement("th");
-header6.textContent = "Gross Price";
-row.appendChild(header6);
-
-function sailed() {
-
-    // Create data rows
-    let dataRow1 = document.createElement("tr");
-    tbody.appendChild(dataRow1);
-    let data1 = document.createElement("td");
-    data1.textContent = "id";
-    dataRow1.appendChild(data1);
-
-    let data2 = document.createElement("td");
-    data2.textContent = "Costomer Name";
-    dataRow1.appendChild(data2);
-
-    let data3 = document.createElement("td");
-    data3.textContent = "product Name";
-    dataRow1.appendChild(data3);
-
-    let data4 = document.createElement("td");
-    data4.textContent = "friut";
-    dataRow1.appendChild(data4);
-
-    let data5 = document.createElement("td");
-    data5.textContent = "1";
-    dataRow1.appendChild(data5);
-
-    let data6 = document.createElement("td");
-    data6.textContent = "5$";
-    dataRow1.appendChild(data6);
+        td_delet.appendChild(imgdelet)
+        tr.appendChild(td_id);
+        tr.appendChild(td_customerName);
+        tr.appendChild(td_product);
+        tr.appendChild(td_total);
+        tr.appendChild(td_delet);
+        tablebody.appendChild(tr);
+        list++;
+    }
 }
-let addtable = document.createElement('div');
-addtable.textContent = 'add';
-addtable.addEventListener('click', sailed)
-row.appendChild(addtable);
+let tablebody = document.querySelector('tbody');
 
-let content = document.querySelector('.content');
-content.appendChild(table);
+diplayTable();
