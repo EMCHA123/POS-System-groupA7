@@ -1,3 +1,4 @@
+
 function loadSaveHisData() {
     let getStoragehis = JSON.parse(localStorage.getItem('dataHistory'));
     historyData = getStoragehis != null ? getStoragehis : historyData;
@@ -43,3 +44,4 @@ function diplayTable() {
 let tablebody = document.querySelector('tbody');
 
 diplayTable();
+

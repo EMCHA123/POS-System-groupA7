@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=, initial-scale=1.0"> -->
     <title>POS</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js" defer></script>
 </head>
-
 <body>
     <div class="container">
         <div class="bar-top">
-            <input type="text" name="" placeholder="Seach" id="seach">
             <div class="addProIcon">
-            <i class="material-icons">add</i>
+                <i class="material-icons">add</i>
+                <P style="padding: 10px;">Add product</P>
             </div>
+            <input type="text" name="" placeholder="Seach products" id="seach">
         </div>
         <div class="content">
             <nav>
@@ -25,36 +23,56 @@
                     <h1>Elevent</h1>
                 </div>
                 <ul>
-                    <li><i class="material-icons">shopping_cart</i><a href="index.html">Product</a></li>
                     <li><i class="material-icons">view_quilt</i><a href="./pages/dashboad.html">Dashboad</a></li>
-                    <li><i class="material-icons">settings_backup_restore</i><a href="./pages/history.html">History</a></li>
+                    <li id="menuPro"><i class="material-icons">shopping_cart</i><a href="index.html">Product</a></li>
+                    <li><i class="material-icons">settings_backup_restore</i><a href="./pages/history.html">History</a>
+                    </li>
                 </ul>
             </nav>
             <div class="product-side">
                 <div class="cartPro-side">
                     <div class="categories">
-                        <span>Foods</span>
-                        <span>Fruits</span>
-                        <span>Drinks</span>
+                        <select name="" id="categories">
+                            <option>All product</option>
+                            <option>Foods</option>
+                            <option>Fruits</option>
+                            <option>Drinks</option>
+                        </select>
                     </div>
                     <div class="cardSide">
 
                     </div>
                 </div>
-                <div class="addToCart-side">
-                   
+                <div class="addToCart">
+                    <div class="addToCart-side">
+
+                    </div>
+                    <div class="checkTotalCard">
+                        <h3>Check materail price!</h3>
+                        <span class="checkprTotal">
+                            <span>Totale: </span>
+                            <span>00</span>
+                        </span>
+                        <div class="btnConfirm">
+                            <button id="btnCheckPrice">Baught!</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="createProPage">
         <div class="divCreateCart">
-            <h2>Create new Product</h2>
+            <h2 style="text-align: center;">Create new Product</h2>
             <span>Name:
                 <input type="text" name="" id="name">
             </span>
             <span>Categories:
-                <input type="text" name="" id="categories">
+                <select name="" id="categorY">
+                    <option>Foods</option>
+                    <option>Fruits</option>
+                    <option>Drinks</option>
+                </select>
             </span>
             <span>Stock:
                 <input type="number" name="" id="stock">
@@ -68,6 +86,23 @@
             </span>
         </div>
     </div>
-</body>
+    <div class="checkOutPage">
+        <div class="checkRecip">
+            <h2 style="text-align: center;">Recip</h2>
+            <span>Name:
+                <input type="text" name="" id="cusomerName">
+            </span>
+            <div class="item">
 
+            </div>
+            <div class="recipFooter">
+                <div class="total">
+                    <p>Total:</p>
+                    <span>00</span>
+                </div>
+                <button id="btnPay">Pay!</button>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
