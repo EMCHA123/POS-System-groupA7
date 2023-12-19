@@ -4,7 +4,6 @@ function loadSaveHisData() {
     console.log(historyData)
 }
 loadSaveHisData()
-
 function diplayTable() {
     console.log(historyData)
     let list = 1;
@@ -28,6 +27,7 @@ function diplayTable() {
         let td_delet = document.createElement('td');
 
         let imgdelet = document.createElement('img');
+        imgdelet.id = list;
         imgdelet.src = '../img/deleteicon.png';
         // // ............function remove...........
 
@@ -36,9 +36,12 @@ function diplayTable() {
         }
 
         imgdelet.addEventListener('click', (e) => {
-            if (window.confirm('Are you sure to remove?')) {
-                e.target.closest('tr').remove();
-                removeDataFromLocalStorage();
+            let imgdelet = e.target.id;
+            for (his of historyData){
+                if (window.confirm('Are you sure to remove?')) {
+                    e.target.closest('tr').remove();
+                    his[imgdelet].removeItem()
+                }
             }
         });
 

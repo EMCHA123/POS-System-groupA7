@@ -317,7 +317,7 @@ function checkOutPagebtn(e){
     let cusName = customerName.value;
     let total = e.target.parentElement.children[0].children[1].textContent
     for (item of checkoutItem){
-
+        
         let namePro = item.children[0].textContent;
         let pricePro = item.children[1].textContent;
         storeItem += (namePro + ":" + pricePro + '/ ');
@@ -332,7 +332,7 @@ function checkOutPagebtn(e){
     beHistory.total = total;
     historyData.push(beHistory);
     saveHistoyData() 
-    // location.reload(); 
+ 
 }
 
 loadSaveProductData();
@@ -360,3 +360,12 @@ function loadSaveHisData() {
 }
 loadSaveHisData()
 console.log(historyData);
+let allcategory = document.querySelectorAll('.allcategoy');
+let sumCateg = 0;
+for (categ of allcategory){
+    sumCateg++
+}
+function nCategoriesData(){
+    localStorage.setItem('nCategories', JSON.stringify(sumCateg));
+}
+nCategoriesData()
