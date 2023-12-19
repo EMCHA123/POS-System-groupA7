@@ -61,7 +61,8 @@ nav .nav-logo{
     height: 30%;
 }
 .nav-logo h1{
-    background-color: #d73a3a;
+    background-color: #fff;
+    color: black;
 }
 nav ul li{
     display: flex;
@@ -110,19 +111,11 @@ table tr:nth-child(even) {
 
     color: #fff;
 }
-table tr:hover {
-    background-color:  palevioletred;
-    color: #fff;
-}
 table tr th {
     background: teal;
     padding: 15px;
     text-align: center;
 
-    color: #fff;
-}
-table tr:hover {
-    background-color:  palevioletred;
     color: #fff;
 }
 table tr th {
@@ -143,11 +136,10 @@ tr img{
 .td_product{
     width: auto;
     height: auto;
-<<<<<<< HEAD
 }
-=======
+#history{
+    opacity: 1;
 }
-
 
 table tr td {
     border: 1px solid gray;
@@ -162,4 +154,3 @@ tr img{
     height: auto;
 }
 
->>>>>>> 001fc0eb096ea0344218844ce963d39c2ed333c0
