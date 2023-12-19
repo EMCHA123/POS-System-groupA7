@@ -1,12 +1,11 @@
+
 function loadSaveHisData() {
     let getStoragehis = JSON.parse(localStorage.getItem('dataHistory'));
     historyData = getStoragehis != null ? getStoragehis : historyData;
-    console.log(historyData)
 }
 loadSaveHisData()
 
 function diplayTable() {
-    console.log(historyData)
     let list = 1;
     for (his of historyData) {
 
@@ -28,13 +27,12 @@ function diplayTable() {
         let td_delet = document.createElement('td');
 
         let imgdelet = document.createElement('img');
-        imgdelet.id = list;
+        imgdelet.id = list-1;
         imgdelet.src = '../img/deleteicon.png';
-        // // ............function remove...........
-
-        function removeDataFromLocalStorage() {
-            localStorage.removeItem('dataHistory');
-        }
+        imgdelet.addEventListener('click', function(){
+            deleteCategory(his);
+        })
+        // ............function remove...........
 
         imgdelet.addEventListener('click', (e) => {
             let imgdelet = e.target.id;
@@ -45,7 +43,6 @@ function diplayTable() {
                 }
             }
         });
-
 
         td_delet.appendChild(imgdelet)
         tr.appendChild(td_id);
