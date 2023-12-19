@@ -4,8 +4,6 @@ function loadSaveHisData() {
     console.log(historyData)
 }
 loadSaveHisData()
-
-<<<<<<< HEAD
 function diplayTable() {
     console.log(historyData)
     let list = 1;
@@ -72,6 +70,3 @@ search.addEventListener('keyup', (e) => {
 
     }
 })
-=======
-
->>>>>>> 001fc0eb096ea0344218844ce963d39c2ed333c0
