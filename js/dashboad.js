@@ -51,19 +51,15 @@ function display_data() {
     }
     let sum = 0
     for (let pro of prodcutData) {
-        // console.log(pro)
         let i = 0;
         let income_span = document.querySelector('.income');
         let total = income_span.textContent;
-        // console.log(pro.total)
-
         sumTotal = parseInt(total) + parseInt(pro.total);
         income_span.textContent = sumTotal + '$';
         if (income_span.pro) {
             i++
         }
     }
-
 }
 function display_inStock() {
     let inStock_span = document.querySelector('.instock');
@@ -74,8 +70,23 @@ function display_inStock() {
     }
 }
 
-
 loadSaveProductData();
 laodgetProductDara()
 display_data();
 display_inStock()
+
+// ...............search.................
+let search = document.querySelector('#seach');
+let trHis = document.querySelectorAll('tbody tr');
+search.addEventListener('keyup', (e) => {
+    let searchCha = e.target.value;
+    for (trs of trHis) {
+        let wordTr = trs.children[1].textContent;
+        if (wordTr.indexOf(searchCha) !== -1) {
+            trs.style.display = 'table-row';
+        } else {
+            trs.style.display = 'none'
+        }
+
+    }
+})

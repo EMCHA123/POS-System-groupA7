@@ -63,6 +63,8 @@ nav .nav-logo{
 .nav-logo h1{
     background-color: #fff;
     color: black;
+    background-color: #fff;
+    color: black;
 }
 
 nav ul li{
@@ -115,19 +117,11 @@ table tr:nth-child(even) {
 
     color: #fff;
 }
-table tr:hover {
-    background-color:  palevioletred;
-    color: #fff;
-}
 table tr th {
     background: teal;
     padding: 15px;
     text-align: center;
 
-    color: #fff;
-}
-table tr:hover {
-    background-color:  palevioletred;
     color: #fff;
 }
 table tr th {
@@ -149,7 +143,9 @@ tr img{
     width: auto;
     height: auto;
 }
-
+#history{
+    opacity: 1;
+}
 
 table tr td {
     border: 1px solid gray;

@@ -4,7 +4,7 @@ function loadSaveHisData() {
     historyData = getStoragehis != null ? getStoragehis : historyData;
 }
 loadSaveHisData()
-
+// .............desplay table .................
 function diplayTable() {
     let list = 1;
     for (his of historyData) {
@@ -29,18 +29,21 @@ function diplayTable() {
         let imgdelet = document.createElement('img');
         imgdelet.id = list-1;
         imgdelet.src = '../img/deleteicon.png';
+<<<<<<< HEAD
         imgdelet.addEventListener('click', function(){
             deleteCategory(his);
         })
         // ............function remove...........
 
+=======
+
+        // // ............function remove...........
+>>>>>>> 73b990137a94d185a76418057fdfaa1847da2da3
         imgdelet.addEventListener('click', (e) => {
             let imgdelet = e.target.id;
-            for (his of historyData){
-                if (window.confirm('Are you sure to remove?')) {
-                    e.target.closest('tr').remove();
-                    his[imgdelet].removeItem()
-                }
+            for (his of historyData) {
+                e.target.closest('tr').remove();
+                his[imgdelet].removeItem()
             }
         });
 
