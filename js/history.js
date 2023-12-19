@@ -4,10 +4,6 @@ function loadSaveHisData() {
     console.log(historyData)
 }
 loadSaveHisData()
-<<<<<<< HEAD
-=======
-
->>>>>>> 35387a30a43b2a6834a730e9fe4ea6724a525498
 function diplayTable() {
     console.log(historyData)
     let list = 1;

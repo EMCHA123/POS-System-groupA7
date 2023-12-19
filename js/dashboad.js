@@ -51,19 +51,15 @@ function display_data() {
     }
     let sum = 0
     for (let pro of prodcutData) {
-        // console.log(pro)
         let i = 0;
         let income_span = document.querySelector('.income');
         let total = income_span.textContent;
-        // console.log(pro.total)
-
         sumTotal = parseInt(total) + parseInt(pro.total);
         income_span.textContent = sumTotal + '$';
         if (income_span.pro) {
             i++
         }
     }
-
 }
 function display_inStock() {
     let inStock_span = document.querySelector('.instock');
@@ -73,7 +69,6 @@ function display_inStock() {
         inStock_span.textContent = instockNum;
     }
 }
-
 
 loadSaveProductData();
 laodgetProductDara()
