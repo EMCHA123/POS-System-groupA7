@@ -1,17 +1,15 @@
 let dashboard = document.querySelector('.dashboad_sold');
 let top_product = document.querySelector('.top_product');
 let table = document.querySelector('table');
-
+//<========take data from localstorage========>
 function loadSaveProductData() {
     let getStorage = JSON.parse(localStorage.getItem('productData'));
     proData = getStorage != null ? getStorage : proData;
-    // console.log(proData);
 }
 
 function laodgetProductDara() {
     let storage_total = JSON.parse(localStorage.getItem('dataHistory'));
     prodcutData = storage_total != null ? storage_total : prodcutData;
-    // console.log(prodcutData);
 }
 function loadNCategoriesData() {
     let getCategories = JSON.parse(localStorage.getItem('nCategories'));
@@ -20,17 +18,17 @@ function loadNCategoriesData() {
 
 }
 loadNCategoriesData()
-
+    //<======Display data=====>
 function display_data() {
     let list = 1;
     for (prodcut of proData) {
-        //list_product
+        //<======list_product=====>
         let tbody = document.createElement('tbody');
         let tr1 = document.createElement('tr');
         let th = document.createElement('td')
         th.textContent = list;
 
-        // add_dat from localstorage
+        //<====== add_dat from localstorage======>
         let td_data1 = document.createElement('td');
         td_data1.textContent = prodcut.name;
         let add_categary = document.createElement('td');
@@ -38,18 +36,17 @@ function display_data() {
         let add_price = document.createElement('td');
         add_price.textContent = prodcut.price + '$';
 
-        //......list_product......
+        //<======list_product=====>
         table.appendChild(tbody)
         tbody.appendChild(tr1);
         tr1.appendChild(th);
 
-        //...add_data from localstorage...
+        //<=====add_data from localstorage====>
         tr1.appendChild(td_data1);
         tr1.appendChild(add_categary);
         tr1.appendChild(add_price);
         list++;
     }
-    let sum = 0
     for (let pro of prodcutData) {
         let i = 0;
         let income_span = document.querySelector('.income');
@@ -75,7 +72,7 @@ laodgetProductDara()
 display_data();
 display_inStock()
 
-// ...............search.................
+//<========search======>
 let search = document.querySelector('#seach');
 let trHis = document.querySelectorAll('tbody tr');
 search.addEventListener('keyup', (e) => {
