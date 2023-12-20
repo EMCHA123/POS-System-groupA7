@@ -96,7 +96,8 @@ function loadSaveProductData() {
     let getStorage = JSON.parse(localStorage.getItem('productData'));
     proData = getStorage != null ? getStorage : proData;
 }
-
+// loadSaveProductData.clear()
+// localStorage.removeItem("productData");
 // ________________________________DisplayCardProduct________________________
 function dispalyProCard() {
     hide(createProPage)

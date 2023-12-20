@@ -1,7 +1,7 @@
+
 function loadSaveHisData() {
     let getStoragehis = JSON.parse(localStorage.getItem('dataHistory'));
     historyData = getStoragehis != null ? getStoragehis : historyData;
-    console.log(historyData)
 }
 loadSaveHisData()
 // .............desplay table .................
@@ -27,7 +27,7 @@ function diplayTable() {
         let td_delet = document.createElement('td');
 
         let imgdelet = document.createElement('img');
-        imgdelet.id = list;
+        imgdelet.id = list-1;
         imgdelet.src = '../img/deleteicon.png';
 
         // // ............function remove...........
