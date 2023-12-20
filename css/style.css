@@ -294,6 +294,7 @@ button:hover{
     margin: auto;
     width: 30%;
     padding: 20px 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     background-color: teal;
@@ -322,6 +323,7 @@ button:hover{
     margin: auto;
     width: 30%;
     padding: 20px 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     color: #fff;
