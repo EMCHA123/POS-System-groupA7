@@ -154,8 +154,6 @@ select{
     width: 45%;
     height:auto;
     margin: 10px;
-    /* display: flex;
-    flex-direction: column; */
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 5px 5px 20px rgba(152, 129, 129, 0.5);
@@ -164,7 +162,7 @@ select{
 }
 
 .card:hover{
-    width: 48%;
+    width: 46%;
     transition: 0.5s;
 }
 .card h2{
