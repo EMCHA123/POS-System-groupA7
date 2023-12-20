@@ -169,6 +169,7 @@ th {
 
 tbody:nth-child(odd) {
     background-color: rgb(27, 155, 211);
+    color: white;
 }
 
 h2 {
